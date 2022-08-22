@@ -65,8 +65,13 @@ public class ProveedorController {
 	}
 	
 	@DeleteMapping("/proveedor/{id}")
-	public void eleiminarProveedor(@PathVariable(name="id")int id) {
-		proveedorServiceImpl.eliminarProveedor(id);
+	public String eliminarProveedor(@PathVariable(name="id")int id) {
+		try {
+			proveedorServiceImpl.eliminarProveedor(id);
+			return "Proveedor eliminado";
+		} catch (Exception e) {
+			return "La proveedor no se puede eliminar referencia a piezas_proveedores";
+		}
 	}
 	
 	

@@ -65,8 +65,13 @@ public class PiezaController {
 	}
 	
 	@DeleteMapping("/piezas/{id}")
-	public void eliminarPieza(@PathVariable(name="id")int id) {
-		piezaServiceImpl.eliminarPieza(id);
+	public String eliminarPieza(@PathVariable(name="id")int id) {
+		try {
+			piezaServiceImpl.eliminarPieza(id);
+			return "Pieza eliminada";
+		} catch (Exception e) {
+			return "La pieza no se puede eliminar referencia a piezas_proveedores";
+		}
 	}
 	
 	
