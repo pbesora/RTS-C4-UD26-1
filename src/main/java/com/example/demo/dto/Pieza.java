@@ -16,21 +16,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name="pieza")//en caso que la tabala sea diferente
+@Table(name="pieza")
 public class Pieza {
 
-	//Atributos de entidad pieza
+	//Attributes
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor e incrementa desde id final de db
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "nombre")//no hace falta si se llama igual
+	@Column(name = "nombre")
 	private String nombre;
 	
 	@OneToMany
     @JoinColumn(name="id")
     private List<PiezasProveedores> piezasProveedores;
 	
-	//Constructores
+	//Constructors
 	
 	public Pieza() {
 	
