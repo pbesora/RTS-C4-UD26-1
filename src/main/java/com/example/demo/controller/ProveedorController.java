@@ -29,9 +29,9 @@ public class ProveedorController {
 	
 	
 	@PostMapping("/proveedores")
-	public Proveedor salvarProveedor(@RequestBody Proveedor curso) {
+	public Proveedor salvarProveedor(@RequestBody Proveedor proveedor) {
 		
-		return proveedorServiceImpl.guardarProveedor(curso);
+		return proveedorServiceImpl.guardarProveedor(proveedor);
 	}
 	
 	
@@ -48,20 +48,20 @@ public class ProveedorController {
 	}
 	
 	@PutMapping("/proveedor/{id}")
-	public Proveedor actualizarProveedor(@PathVariable(name="id")int id,@RequestBody Proveedor Proveedor) {
+	public Proveedor actualizarProveedor(@PathVariable(name="id")int id,@RequestBody Proveedor proveedor) {
 		
-		Proveedor Proveedor_seleccionado= new Proveedor();
-		Proveedor Proveedor_actualizado= new Proveedor();
+		Proveedor proveedor_seleccionado= new Proveedor();
+		Proveedor proveedor_actualizado= new Proveedor();
 		
-		Proveedor_seleccionado= proveedorServiceImpl.proveedorXID(id);
+		proveedor_seleccionado= proveedorServiceImpl.proveedorXID(id);
 		
-		Proveedor_seleccionado.setNombre(Proveedor.getNombre());
+		proveedor_seleccionado.setNombre(proveedor.getNombre());
 		
-		Proveedor_actualizado = proveedorServiceImpl.actualizarProveedor(Proveedor_seleccionado);
+		proveedor_actualizado = proveedorServiceImpl.actualizarProveedor(proveedor_seleccionado);
 		
-		System.out.println("El Proveedor actualizado es: "+ Proveedor_actualizado);
+		System.out.println("El Proveedor actualizado es: "+ proveedor_actualizado);
 		
-		return Proveedor_actualizado;
+		return proveedor_actualizado;
 	}
 	
 	@DeleteMapping("/proveedor/{id}")
